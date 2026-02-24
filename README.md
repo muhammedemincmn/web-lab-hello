@@ -15,3 +15,6 @@ Bu proje, Web Tasarimi ve Programlama dersi LAB-1 kapsaminda Vite + React + Type
 ## Kurulum
 ```bash
 npm install
+## Erişilebilirlik Testi
+Lighthouse erişilebilirlik puanım: 96
+![Lighthouse Puanı](lighthouse.png)
