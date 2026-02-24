@@ -16,7 +16,4 @@ Lighthouse erişilebilirlik puanım: 96
 ![Lighthouse Puanı](lighthouse.png)
 ## Kurulum
 ```bash
-npm install
-## Erişilebilirlik Testi
-Lighthouse erişilebilirlik puanım: 96
-![Lighthouse Puanı](lighthouse.png)
+npm install 
