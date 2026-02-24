@@ -2,8 +2,13 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: system-ui, sans-serif; line-height: 1.6; background-color: #f9fafb; color: #333; padding: 20px;}
 
-header, section, footer { margin-bottom: 2rem; }
+header, section, footer { margin-bottom: 2rem; padding: 1rem; border: 1px solid #ccc; border-radius: 8px; }
+header { border-bottom: 2px solid #333; }
 ul { margin-left: 20px; }
+nav ul { list-style: none; margin: 0; padding: 0; border-top: 1px solid #ccc; padding-top: 0.5rem; }
+nav li { display: inline; margin-right: 1rem; }
+fieldset { border: 1px solid #333; padding: 1rem; border-radius: 8px; }
+button { padding: 0.5rem 1rem; border: 1px solid #333; border-radius: 6px; cursor: pointer; }
 
 /* Skip link: normalde gizli, Tab ile gorunur */
 .skip-link {
@@ -27,6 +32,6 @@ input, textarea, select {
   width: 100%;
   padding: 0.5rem;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 6px;
 }
 .error-msg { color: red; font-size: 0.85rem; }
