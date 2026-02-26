@@ -27,7 +27,6 @@ function App() {
           </figure>
           <p>Yazılım mühendisliği öğrencisiyim. DevOps, bulut mimarileri (AWS) ve mobil uygulama geliştirme (iOS) üzerine odaklanıyorum.</p>
           <ul>
-            <li>React & TypeScript</li>
             <li>iOS Development</li>
             <li>AWS (Cloud)</li>
           </ul>
