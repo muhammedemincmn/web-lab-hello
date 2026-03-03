@@ -317,6 +317,9 @@ footer {
 
 /* ============================================
    BREAKPOINT: TABLET  ≥ 640px
+   Mobile-first: styles above ARE the mobile (0-639px) baseline.
+   Here we extend for wider viewports.
+   LAB-3 ref: §1515, §2469
    ============================================ */
 @media (min-width: 640px) {
   #root {
@@ -402,6 +405,8 @@ footer {
 
 /* ============================================
    BREAKPOINT: DESKTOP  ≥ 1024px
+   Max container width: 1200px.
+   LAB-3 ref: §1516, §2510, §2516
    ============================================ */
 @media (min-width: 1024px) {
   #root {
