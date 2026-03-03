@@ -1,26 +1,12 @@
+@import './styles/tokens.css';
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
-:root {
-  --bg-color: #ffffff;
-  --text-color: #111827;
-  --accent-color: #2563eb;
-  --accent-hover: #1d4ed8;
-  --border-color: #e5e7eb;
-  --bg-alt: #f9fafb;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg-color: #0f172a;
-    --text-color: #f8fafc;
-    --accent-color: #3b82f6;
-    --accent-hover: #60a5fa;
-    --border-color: #334155;
-    --bg-alt: #1e293b;
-  }
-}
-
-* {
+/* ============================================
+   BASE RESET & GLOBAL STYLES (Mobile-First)
+   ============================================ */
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -28,27 +14,35 @@
 
 html {
   scroll-behavior: smooth;
+  font-size: 100%;
 }
 
 body {
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  background-color: var(--bg-color);
-  color: var(--text-color);
+  font-size: var(--font-size-base);
+  background-color: var(--color-bg);
+  color: var(--color-text);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 a {
-  color: var(--accent-color);
+  color: var(--color-primary);
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: color var(--transition-base);
 }
 
 a:hover {
-  color: var(--accent-hover);
+  color: var(--color-primary-hover);
 }
 
 ul {
   list-style: none;
+}
+
+/* Focus ring — accessibility */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
 }
