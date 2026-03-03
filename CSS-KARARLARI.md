@@ -1,5 +1,7 @@
 # CSS Kararları
 
+> Bu belge, LAB-3 kapsamında uygulanan responsive tasarım kararlarını ve mühendislik gerekçelerini özetlemektedir.
+
 ## 1. Breakpoint Seçimi
 
 Projede üç breakpoint belirledik: **0–639px (Mobil)**, **640px (Tablet)** ve **1024px (Masaüstü)**.
