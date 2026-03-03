@@ -198,6 +198,13 @@ figcaption {
   min-height: 80px;
 }
 
+/* ----
+   Project grid: auto-fit with minmax ensures cards
+   fill available space and wrap naturally.
+   object-fit: cover on images keeps aspect ratio intact.
+   Reference: LAB-3 §2095, §2166-2167, §2203
+---- */
+
 /* ---- Contact Form / İletişim ---- */
 form {
   background-color: var(--color-bg-alt);
