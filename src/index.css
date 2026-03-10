@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Dark mode: class-based selector strategy (LAB-4) */
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* ============================================
    LAB-4: TAILWIND CSS v4 DESIGN TOKENS
    Defined via @theme directive
