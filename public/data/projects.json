@@ -1,0 +1,96 @@
+[
+    {
+        "id": "proj-001",
+        "title": "iOS Akıllı Şehir Uygulaması",
+        "description": "SwiftUI ve Combine framework'ü kullanılarak geliştirilen Elazığ Akıllı Şehir mobil uygulaması. Gerçek zamanlı ulaşım, hava durumu ve belediye bildirimleri entegrasyonu içerir.",
+        "tech": [
+            "Swift",
+            "SwiftUI",
+            "Combine",
+            "REST API",
+            "Firebase"
+        ],
+        "year": 2025,
+        "category": "ios",
+        "featured": true,
+        "image": "https://via.placeholder.com/600x400?text=iOS+App"
+    },
+    {
+        "id": "proj-002",
+        "title": "Kişisel Portfolyo Web Sitesi",
+        "description": "React, TypeScript ve Tailwind CSS v4 ile oluşturulmuş kişisel portfolyo. Mobile-first tasarım, erişilebilirlik (a11y) ve performans optimizasyonları içerir.",
+        "tech": [
+            "React",
+            "TypeScript",
+            "Tailwind CSS",
+            "Vite"
+        ],
+        "year": 2026,
+        "category": "web",
+        "featured": true,
+        "image": "https://via.placeholder.com/600x400?text=Portfolio"
+    },
+    {
+        "id": "proj-003",
+        "title": "AWS DevOps CI/CD Pipeline",
+        "description": "AWS CodePipeline, CodeBuild ve ECS kullanılarak kurulan tam otomatik CI/CD altyapısı. Docker containerization ve Infrastructure as Code (Terraform) ile yönetilmektedir.",
+        "tech": [
+            "AWS",
+            "Terraform",
+            "Docker",
+            "GitHub Actions",
+            "ECS"
+        ],
+        "year": 2025,
+        "category": "devops",
+        "featured": true,
+        "image": "https://via.placeholder.com/600x400?text=DevOps+Pipeline"
+    },
+    {
+        "id": "proj-004",
+        "title": "Chatbot Backend API",
+        "description": "FastAPI ve LangChain kullanan akıllı chatbot backend servisi. OpenAI GPT entegrasyonu, PostgreSQL veritabanı ve Docker Compose ile containerize edilmiş mimari.",
+        "tech": [
+            "Python",
+            "FastAPI",
+            "LangChain",
+            "PostgreSQL",
+            "Docker"
+        ],
+        "year": 2024,
+        "category": "backend",
+        "featured": false,
+        "image": "https://via.placeholder.com/600x400?text=Chatbot+API"
+    },
+    {
+        "id": "proj-005",
+        "title": "Pomodoro & Görev Takip Uygulaması",
+        "description": "SwiftUI ile geliştirilen pomodoro zamanlayıcı ve görev yönetim uygulaması. CoreData ile yerel veri saklama, bildirim sistemi ve haftalık istatistik raporlaması içerir.",
+        "tech": [
+            "Swift",
+            "SwiftUI",
+            "CoreData",
+            "UserNotifications"
+        ],
+        "year": 2024,
+        "category": "ios",
+        "featured": false,
+        "image": "https://via.placeholder.com/600x400?text=Pomodoro+App"
+    },
+    {
+        "id": "proj-006",
+        "title": "React LAB Öğrenme Projesi",
+        "description": "Üniversite web laboratuvarı kapsamında geliştirilen, her hafta yeni bir konsept öğrenen dönemlik proje. Semantic HTML, CSS responsiveness, Tailwind ve TypeScript aşamalarını kapsar.",
+        "tech": [
+            "React",
+            "TypeScript",
+            "Tailwind CSS",
+            "Vite",
+            "Git"
+        ],
+        "year": 2026,
+        "category": "web",
+        "featured": false,
+        "image": "https://via.placeholder.com/600x400?text=Web+Lab"
+    }
+]
