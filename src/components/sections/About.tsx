@@ -9,7 +9,7 @@ export default function About() {
         Kısaca Ben
       </h2>
       
-      <div className="flex flex-col md:flex-row gap-12 items-center md:items-start bg-white/50 dark:bg-white/[0.02] backdrop-blur-3xl border border-gray-200/50 dark:border-white/5 p-8 sm:p-12 rounded-3xl shadow-sm">
+      <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-center lg:items-center bg-white/50 dark:bg-white/[0.02] backdrop-blur-3xl border border-gray-200/50 dark:border-white/5 p-8 sm:p-12 lg:p-16 rounded-3xl shadow-sm">
         
         {/* Profile Image with Glow Effect */}
         <figure className="relative shrink-0 flex flex-col items-center group">
@@ -17,12 +17,12 @@ export default function About() {
           <img
             src="https://via.placeholder.com/180"
             alt="Muhammed Emin profil fotoğrafı"
-            className="w-40 h-40 sm:w-48 sm:h-48 rounded-full object-cover border-4 border-white dark:border-[#121826] shadow-xl relative z-10 transition-transform duration-500 group-hover:scale-[1.02]"
+            className="w-40 h-40 sm:w-48 sm:h-48 lg:w-56 lg:h-56 rounded-full object-cover border-4 border-white dark:border-[#121826] shadow-xl relative z-10 transition-transform duration-500 group-hover:scale-[1.02]"
           />
         </figure>
         
-        <div className="flex flex-col gap-6 max-w-2xl text-center md:text-left">
-          <h3 className="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-gray-100">
+        <div className="flex flex-col gap-6 flex-1 text-center lg:text-left">
+          <h3 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-gray-900 dark:text-gray-100">
             Kod yazmaktan daha fazlası...
           </h3>
           <p className="text-base sm:text-lg leading-relaxed text-gray-600 dark:text-gray-400 font-light">
@@ -38,6 +38,7 @@ export default function About() {
           </p>
         </div>
       </div>
+
     </section>
   );
 }
