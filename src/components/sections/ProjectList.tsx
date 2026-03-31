@@ -3,7 +3,6 @@ import { useState, useMemo } from 'react';
 import type { Project, FilterState, Category, SortField, SortOrder } from '../../types/project';
 import { applyFilters } from '../../utils/projectHelpers';
 import ProjectFilter from '../forms/ProjectFilter';
-import Card from '../Card';
 
 interface ProjectListProps {
   projects: Project[];
