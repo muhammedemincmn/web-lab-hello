@@ -1,54 +1,45 @@
+@import "tailwindcss";
+
+/* Dark mode: class-based selector strategy (LAB-4) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ============================================
+   LAB-4: TAILWIND CSS v4 DESIGN TOKENS
+   Defined via @theme directive
+   ============================================ */
+@theme {
+  /* Color palette */
+  --color-primary: #1E3A8A;
+  --color-secondary: #2563EB;
+  --color-accent: #7C3AED;
+  --color-surface: #F9FAFB;
+  --color-muted: #6B7280;
+  --color-error: #DC2626;
+  --color-success: #216A34;
+
+  /* Typography */
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+
+  /* Border radius */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
+}
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-
-:root {
-  --bg-color: #ffffff;
-  --text-color: #111827;
-  --accent-color: #2563eb;
-  --accent-hover: #1d4ed8;
-  --border-color: #e5e7eb;
-  --bg-alt: #f9fafb;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg-color: #0f172a;
-    --text-color: #f8fafc;
-    --accent-color: #3b82f6;
-    --accent-hover: #60a5fa;
-    --border-color: #334155;
-    --bg-alt: #1e293b;
-  }
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  line-height: 1.6;
+  font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  color: var(--accent-color);
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-a:hover {
-  color: var(--accent-hover);
-}
-
-ul {
-  list-style: none;
-}
+/* Focus ring handled by Tailwind focus: utilities */
