@@ -1,87 +1,94 @@
+// src/App.tsx
+// LAB-6: Ara Checkpoint #1 — App as an Orchestrator & Strict TypeScript
+
+import { useState, useEffect, useCallback } from 'react';
 import './App.css';
+import type { Project } from './types/project';
+import { fetchProjects } from './services/projectService';
+
+// Layout Components
+import Header from './components/layout/Header';
+import Footer from './components/layout/Footer';
+
+// Section & Form Components
+import Hero from './components/sections/Hero';
+import About from './components/sections/About';
+import Skills from './components/sections/Skills';
+import ProjectList from './components/sections/ProjectList';
+import ContactForm from './components/forms/ContactForm';
 
 function App() {
+  // ── Application State ───────────────────────────────────────────────────
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+  const [dark, setDark] = useState<boolean>(() =>
+    window.matchMedia('(prefers-color-scheme: dark)').matches
+  );
+
+  // ── Dark mode effect ─────────────────────────────────────────────────────
+  useEffect(() => {
+    document.documentElement.classList.toggle('dark', dark);
+  }, [dark]);
+
+  // ── Data fetching ────────────────────────────────────────────────────────
+  const loadProjects = useCallback(async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const data = await fetchProjects();
+      setProjects(data);
+    } catch (err: unknown) {
+      const message =
+        err instanceof Error ? err.message : 'Projeler yüklenirken bir hata oluştu.';
+      setError(message);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    loadProjects();
+  }, [loadProjects]);
+
   return (
-    <>
-      {/* Klavye kullanıcıları için menüyü atlama linki */}
-      <a href="#main-content" className="skip-link">Ana içeriğe atla</a>
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+      {/* Skip link for accessibility */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:bg-primary focus:text-white focus:px-4 focus:py-2 focus:rounded-xl"
+      >
+        Ana içeriğe atla
+      </a>
 
-      <header>
-        <h1>Muhammed Emin - Kişisel Portfolyo</h1>
-        <nav aria-label="Ana navigasyon">
-          <ul>
-            <li><a href="#hakkimda">Hakkımda</a></li>
-            <li><a href="#projeler">Projeler</a></li>
-            <li><a href="#iletisim">İletişim</a></li>
-          </ul>
-        </nav>
-      </header>
+      {/* Header Layout */}
+      <Header dark={dark} toggleDark={() => setDark((prev) => !prev)} />
 
-      <main id="main-content">
-        <section id="hakkimda">
-          <h2>Hakkımda</h2>
-          <figure>
-            {/* Gerçek bir fotoğrafın varsa public klasörüne koyup yolunu verebilirsin */}
-            <img src="https://via.placeholder.com/150" alt="Muhammed Emin vesikalık fotoğrafı" />
-            <figcaption>Muhammed Emin</figcaption>
-          </figure>
-          <p>Yazılım mühendisliği öğrencisiyim. DevOps, bulut mimarileri (AWS) ve mobil uygulama geliştirme (iOS) üzerine odaklanıyorum.</p>
-          <ul>
-            <li>iOS Development</li>
-            <li>AWS (Cloud)</li>
-          </ul>
-        </section>
-
-        <section id="projeler">
-          <h2>Projelerim</h2>
-        </section>
-
-        <section id="iletisim">
-          <h2>İletişim</h2>
-          <form action="#" method="POST" noValidate>
-            <fieldset>
-              <legend>İletişim Formu</legend>
-
-              <div className="form-group">
-                <label htmlFor="name">Ad Soyad: </label>
-                <input type="text" id="name" name="name" required minLength={2} aria-describedby="name-error" />
-                <small id="name-error" className="error-msg" role="alert"></small>
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="email">E-posta: </label>
-                <input type="email" id="email" name="email" required aria-describedby="email-error" />
-                <small id="email-error" className="error-msg" role="alert"></small>
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="subject">Konu: </label>
-                <select id="subject" name="subject" required aria-describedby="subject-error">
-                  <option value="">-- Seçiniz --</option>
-                  <option value="is">İş Teklifi</option>
-                  <option value="soru">Soru</option>
-                  <option value="oneri">Öneri</option>
-                </select>
-                <small id="subject-error" className="error-msg" role="alert"></small>
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="message">Mesajınız:</label>
-                <textarea id="message" name="message" rows={5} required minLength={10} aria-describedby="message-error"></textarea>
-                <small id="message-error" className="error-msg" role="alert"></small>
-              </div>
-
-              <button type="submit">Gönder</button>
-            </fieldset>
-          </form>
+      {/* Main Content Sections */}
+      <main id="main-content" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20 pb-20">
+        <Hero />
+        <About />
+        <Skills />
+        <ProjectList 
+          projects={projects} 
+          loading={loading} 
+          error={error} 
+          onRetry={loadProjects} 
+        />
+        
+        {/* Contact Section */}
+        <section id="iletisim" aria-labelledby="iletisim-baslik" className="py-12 scroll-mt-24">
+          <h2 id="iletisim-baslik" className="text-2xl sm:text-3xl font-bold mb-8 inline-block border-b-2 border-secondary pb-2">
+            İletişim
+          </h2>
+          <ContactForm />
         </section>
       </main>
 
-      <footer>
-        <p>&copy; 2026 Muhammed Emin. Tüm hakları saklıdır.</p>
-      </footer>
-    </>
-  )
+      {/* Footer Layout */}
+      <Footer />
+    </div>
+  );
 }
 
 export default App;
