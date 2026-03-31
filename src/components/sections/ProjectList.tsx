@@ -38,9 +38,9 @@ const INITIAL_FILTERS: FilterState = {
 // ── Sub-components that belong only here ─────────────────────────
 function LoadingSkeleton() {
   return (
-    <div role="status" aria-label="Projeler yükleniyor" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div role="status" aria-label="Projeler yükleniyor" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
       {Array.from({ length: 6 }, (_, i) => (
-        <div key={i} className="rounded-2xl bg-gray-100 dark:bg-gray-800 animate-pulse h-80" aria-hidden="true" />
+        <div key={i} className="rounded-3xl bg-gray-200/50 dark:bg-white/5 animate-pulse h-96" aria-hidden="true" />
       ))}
       <span className="sr-only">Yükleniyor…</span>
     </div>
@@ -49,13 +49,13 @@ function LoadingSkeleton() {
 
 function ErrorCard({ message, onRetry }: { message: string; onRetry: () => void }) {
   return (
-    <div role="alert" className="flex flex-col items-center gap-4 py-16 text-center bg-red-50 dark:bg-red-950/20 rounded-2xl border border-red-100 dark:border-red-900/50">
+    <div role="alert" className="flex flex-col items-center gap-4 py-16 text-center bg-error/10 dark:bg-error/5 rounded-3xl border border-error/20 dark:border-error/10">
       <span className="text-4xl" aria-hidden="true">⚠️</span>
-      <p className="text-red-700 dark:text-red-400 font-medium">{message}</p>
+      <p className="text-error dark:text-red-400 font-medium">{message}</p>
       <button
         type="button"
         onClick={onRetry}
-        className="px-5 py-2.5 rounded-xl bg-red-600 dark:bg-red-500 text-white text-sm font-medium hover:bg-red-700 dark:hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500/50 transition-colors"
+        className="px-6 py-3 rounded-full bg-error text-white text-sm font-semibold hover:bg-error/90 focus:outline-none focus:ring-2 focus:ring-error/50 transition-colors shadow-lg shadow-error/20"
       >
         Tekrar Dene
       </button>
@@ -65,44 +65,53 @@ function ErrorCard({ message, onRetry }: { message: string; onRetry: () => void 
 
 function TechBadge({ tech }: { tech: string }) {
   return (
-    <span className="inline-block bg-secondary/10 text-secondary dark:bg-secondary/20 dark:text-blue-300 text-xs font-medium px-2 py-0.5 rounded-full">
+    <span className="inline-block bg-primary/10 text-primary dark:bg-primary/20 dark:text-blue-300 text-xs font-semibold px-2.5 py-1 rounded-full">
       {tech}
     </span>
   );
 }
 
-/**
- * Renders individual project card using the universal Card component if preferred,
- * or as a custom layout to fit the specific needs.
- */
 function CustomProjectCard({ project }: { project: Project }) {
   return (
     <article
-      className="flex flex-col bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200"
+      className="group flex flex-col bg-white/70 dark:bg-[#121826]/70 backdrop-blur-3xl border border-gray-200/50 dark:border-white/5 rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-primary/5 transition-all duration-500 hover:-translate-y-2"
       aria-label={`Proje: ${project.title}`}
     >
-      <img src={project.image} alt={project.title} className="w-full h-44 object-cover" />
-      <div className="flex flex-col gap-3 p-5 flex-1">
+      <div className="relative overflow-hidden">
+        <img 
+          src={project.image} 
+          alt={project.title} 
+          className="w-full h-52 object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out" 
+        />
+        {/* Subtle overlay gradient */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      </div>
+
+      <div className="flex flex-col gap-4 p-6 sm:p-8 flex-1 relative">
         <div className="flex items-start justify-between gap-2">
-          <h3 className="text-base font-semibold text-gray-900 dark:text-white leading-snug">
+          <h3 className="text-xl font-bold text-gray-900 dark:text-white leading-snug group-hover:text-primary transition-colors duration-300">
             {project.title}
           </h3>
           {project.featured && (
-            <span className="shrink-0 text-xs font-medium bg-accent/10 text-accent dark:bg-accent/20 dark:text-purple-300 px-2 py-0.5 rounded-full">
+            <span className="shrink-0 text-xs font-bold bg-accent/10 text-accent dark:bg-accent/20 dark:text-purple-300 px-3 py-1 rounded-full flex items-center gap-1 shadow-sm">
+              <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
               Öne Çıkan
             </span>
           )}
         </div>
-        <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed flex-1">
+        
+        <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed flex-1 font-light">
           {project.description}
         </p>
-        <div className="flex flex-wrap gap-1.5 pt-1">
+        
+        <div className="flex flex-wrap gap-2 pt-2">
           {project.tech.map((t) => (
             <TechBadge key={t} tech={t} />
           ))}
         </div>
-        <div className="flex items-center justify-between text-xs text-gray-400 dark:text-gray-500 pt-2 border-t border-gray-100 dark:border-gray-700">
-          <span className="capitalize">{project.category}</span>
+        
+        <div className="flex items-center justify-between text-xs text-gray-400 dark:text-gray-500 pt-5 mt-2 border-t border-gray-100 dark:border-white/5 font-medium tracking-wide">
+          <span className="uppercase">{project.category}</span>
           <span>{project.year}</span>
         </div>
       </div>
@@ -148,8 +157,11 @@ export default function ProjectList({ projects, loading, error, onRetry }: Reado
   );
 
   return (
-    <section id="projeler" aria-labelledby="projeler-baslik" className="py-12 scroll-mt-24">
-      <h2 id="projeler-baslik" className="text-2xl sm:text-3xl font-bold mb-8 inline-block border-b-2 border-secondary pb-2">
+    <section id="projeler" aria-labelledby="projeler-baslik" className="py-20 scroll-mt-24 animate-slide-up">
+      <h2 
+        id="projeler-baslik" 
+        className="text-3xl sm:text-4xl font-extrabold mb-12 tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-gray-900 to-gray-500 dark:from-white dark:to-gray-400"
+      >
         Projelerim
       </h2>
 
@@ -170,17 +182,17 @@ export default function ProjectList({ projects, loading, error, onRetry }: Reado
       {!loading && error && <ErrorCard message={error} onRetry={onRetry} />}
 
       {!loading && !error && filteredProjects.length === 0 && (
-        <p role="status" className="text-center py-16 text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl">
-          Arama kriterlerinize uygun proje bulunamadı.
+        <p role="status" className="text-center py-20 text-gray-500 dark:text-gray-400 bg-white/50 dark:bg-white/[0.02] border border-gray-200/50 dark:border-white/5 rounded-3xl backdrop-blur-xl">
+          Arama kriterlerinize uygun proje bulunamadı. Lütfen filtreleri temizleyip tekrar deneyin.
         </p>
       )}
 
       {!loading && !error && filteredProjects.length > 0 && (
         <>
-          <p role="status" aria-live="polite" className="text-sm text-gray-500 dark:text-gray-400 mb-4 font-medium">
+          <p role="status" aria-live="polite" className="text-sm text-gray-500 dark:text-gray-400 mb-6 font-medium pl-2">
             {filteredProjects.length} proje gösteriliyor {isFiltered ? '(filtrelenmiş)' : ''}
           </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredProjects.map((project) => (
               <CustomProjectCard key={project.id} project={project} />
             ))}

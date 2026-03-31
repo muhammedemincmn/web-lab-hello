@@ -52,7 +52,7 @@ function App() {
   }, [loadProjects]);
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+    <div className="min-h-screen bg-surface dark:bg-deep-dark text-gray-900 dark:text-gray-100 transition-colors duration-300 selection:bg-primary/30 selection:text-primary dark:selection:text-secondary relative overflow-hidden">
       {/* Skip link for accessibility */}
       <a
         href="#main-content"
@@ -61,11 +61,15 @@ function App() {
         Ana içeriğe atla
       </a>
 
+      {/* Subtle global background abstract elements */}
+      <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/5 dark:bg-primary/10 rounded-full blur-[120px] pointer-events-none mix-blend-multiply dark:mix-blend-screen" />
+      <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-accent/5 dark:bg-accent/10 rounded-full blur-[120px] pointer-events-none mix-blend-multiply dark:mix-blend-screen" />
+
       {/* Header Layout */}
       <Header dark={dark} toggleDark={() => setDark((prev) => !prev)} />
 
       {/* Main Content Sections */}
-      <main id="main-content" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20 pb-20">
+      <main id="main-content" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24 pb-20 relative z-10 animate-fade-in">
         <Hero />
         <About />
         <Skills />

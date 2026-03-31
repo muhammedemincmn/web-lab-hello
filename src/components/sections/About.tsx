@@ -1,30 +1,40 @@
 // src/components/sections/About.tsx
 export default function About() {
   return (
-    <section id="hakkimda" aria-labelledby="hakkimda-baslik" className="py-12 scroll-mt-24">
+    <section id="hakkimda" aria-labelledby="hakkimda-baslik" className="py-20 scroll-mt-24 animate-slide-up">
       <h2 
         id="hakkimda-baslik" 
-        className="text-2xl sm:text-3xl font-bold mb-8 inline-block border-b-2 border-secondary pb-2"
+        className="text-3xl sm:text-4xl font-extrabold mb-12 tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-gray-900 to-gray-500 dark:from-white dark:to-gray-400"
       >
-        Hakkımda
+        Kısaca Ben
       </h2>
-      <div className="flex flex-col sm:flex-row gap-8 items-start">
-        <figure className="flex flex-col items-center gap-3 shrink-0">
+      
+      <div className="flex flex-col md:flex-row gap-12 items-center md:items-start bg-white/50 dark:bg-white/[0.02] backdrop-blur-3xl border border-gray-200/50 dark:border-white/5 p-8 sm:p-12 rounded-3xl shadow-sm">
+        
+        {/* Profile Image with Glow Effect */}
+        <figure className="relative shrink-0 flex flex-col items-center group">
+          <div className="absolute inset-0 bg-primary/20 dark:bg-primary/40 rounded-full blur-2xl group-hover:blur-3xl transition-all duration-500" />
           <img
-            src="https://via.placeholder.com/150"
+            src="https://via.placeholder.com/180"
             alt="Muhammed Emin profil fotoğrafı"
-            className="w-32 h-32 sm:w-40 sm:h-40 rounded-full object-cover border-4 border-gray-200 dark:border-gray-700 shadow"
+            className="w-40 h-40 sm:w-48 sm:h-48 rounded-full object-cover border-4 border-white dark:border-[#121826] shadow-xl relative z-10 transition-transform duration-500 group-hover:scale-[1.02]"
           />
-          <figcaption className="text-sm text-gray-500 dark:text-gray-400 font-medium">
-            Muhammed Emin
-          </figcaption>
         </figure>
-        <div className="flex flex-col gap-4 max-w-2xl">
-          <p className="text-base sm:text-lg leading-relaxed text-gray-700 dark:text-gray-300">
-            Dinamik ve yenilikçi projelere daima ilgi duyan bir geliştiriciyim. Öğrenme sürecimi sürekli devam ettiriyor ve en son teknolojileri projelerime entegre etmeyi amaçlıyorum. 
+        
+        <div className="flex flex-col gap-6 max-w-2xl text-center md:text-left">
+          <h3 className="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-gray-100">
+            Kod yazmaktan daha fazlası...
+          </h3>
+          <p className="text-base sm:text-lg leading-relaxed text-gray-600 dark:text-gray-400 font-light">
+            Dinamik ve yenilikçi projelere daima ilgi duyan bir geliştiriciyim. Öğrenme sürecimi 
+            sürekli devam ettiriyor ve güçlü teknolojileri (<span className="text-primary font-medium">React, iOS, AWS</span>)
+            projelerime entegre etmeyi amaçlıyorum. 
           </p>
-          <p className="text-base sm:text-lg leading-relaxed text-gray-700 dark:text-gray-300">
-            İster güçlü bir REST API yazıyor olayım, ister erişilebilir kullanıcı arayüzleri geliştiriyor olayım; performans, temiz kod ve modüler tasarım vazgeçilmez prensiplerimdir.
+          <p className="text-base sm:text-lg leading-relaxed text-gray-600 dark:text-gray-400 font-light">
+            İster güçlü bir <strong className="font-medium text-gray-900 dark:text-white">REST API</strong> yazıyor olayım, 
+            ister mobil/web için erişilebilir kullanıcı arayüzleri geliştiriyor olayım; 
+            <span className="italic"> performans, temiz kod ve modüler tasarım </span> 
+            vazgeçilmez prensiplerimdir.
           </p>
         </div>
       </div>
